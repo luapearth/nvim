@@ -48,4 +48,6 @@ return require'packer'.startup(function()
             require 'todo-comments'.setup {}
         end
     }
+    -- Telescope
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 end)
