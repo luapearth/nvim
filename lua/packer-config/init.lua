@@ -8,13 +8,14 @@ return require'packer'.startup(function()
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use 'nvim-treesitter/nvim-treesitter-refactor'
 	use 'windwp/nvim-ts-autotag'
+    
 	-- LSP
 	use 'neovim/nvim-lspconfig'
 	use 'hrsh7th/nvim-cmp'
 	use 'hrsh7th/cmp-nvim-lsp'
 
+    use 'hrsh7th/vim-vsnip'
 	use 'saadparwaiz1/cmp_luasnip'
-
 	use 'onsails/lspkind.nvim'
 
 	use('jose-elias-alvarez/null-ls.nvim')
