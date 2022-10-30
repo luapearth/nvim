@@ -27,8 +27,8 @@ return require'packer'.startup(function()
 
     use 'lukas-reineke/indent-blankline.nvim'
     -- use 'romgrk/barbar.nvim'
-    use {'akinsho/bufferline.nvim', tag = "v2.*" }
-    use { "akinsho/toggleterm.nvim", tag = 'v1.*' }
+    use {'akinsho/bufferline.nvim', tag = "v3.*" }
+    use { "akinsho/toggleterm.nvim", tag = '*' }
     use 'ojroques/nvim-bufdel'
 
     use 'numToStr/Comment.nvim'
@@ -53,5 +53,5 @@ return require'packer'.startup(function()
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- Copilot
-    use 'github/copilot.vim'
+    -- use 'github/copilot.vim'
 end)
