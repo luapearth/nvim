@@ -1,54 +1,84 @@
-require'nvim-treesitter.configs'.setup {
-	-- A list of parser names, or "all"
-	ensure_installed = { "lua", "typescript", "javascript", "python" },
+-- [[ Configure Treesitter ]]
+-- See `:help nvim-treesitter`
 
-	-- Install parsers synchronously (only applied to `ensure_installed`)
-	sync_install = false,
+require('nvim-treesitter.configs').setup {
+  -- Add languages to be installed here that you want installed for treesitter
+  ensure_installed = { 'go', 'lua', 'python', 'rust', 'typescript', 'javascript', 'help' },
 
-	highlight = {
-		enable = true,
-
-		additional_vim_regex_highlighting = false,
-	},
-	refactor = {
-		highlight_definitions = { enable = true, clear_on_cursor_move = true, },
-		smart_rename = {
-			enable = true,
-			keymaps = {
-				smart_rename = "grr",
-			},
-		},
-		navigation = {
-			enable = true,
-			keymaps = {
-				goto_definition = "gnd",
-				list_definitions = "gnD",
-				list_definitions_toc = "gO",
-				goto_next_usage = "<A-*>",
-				goto_previous_usage = "<A-#>",
-			},
-		},
-	},
-	autotag = { enable = true, },
-    context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-        config = {
-            javascript = {
-                __default = '// %s',
-                __multiline = '/* %s */',
-                jsx_element = '{/* %s */}',
-                jsx_fragment = '{/* %s */}',
-                jsx_attribute = '// %s',
-                comment = '// %s',
-            },
-            -- typescript = {
-            --     __default = '// %s',
-            --     __multiline = '/* %s */',
-            --     jsx_element = '{/* %s */}',
-            --     jsx_fragment = '{/* %s */}',
-            --     jsx_attribute = '// %s',
-            -- },
-        },
+  highlight = { enable = true },
+  indent = { enable = true },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<c-space>',
+      node_incremental = '<c-space>',
+      scope_incremental = '<c-s>',
+      node_decremental = '<c-backspace>',
+    },
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ['aa'] = '@parameter.outer',
+        ['ia'] = '@parameter.inner',
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        [']m'] = '@function.outer',
+        [']]'] = '@class.outer',
+      },
+      goto_next_end = {
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
+      },
+      goto_previous_start = {
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
+      },
+      goto_previous_end = {
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
+      },
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ['<leader>a'] = '@parameter.inner',
+      },
+      swap_previous = {
+        ['<leader>A'] = '@parameter.inner',
+      },
+    },
+  },
+  context_commentstring = {
+    enable = true,
+    config = {
+      javascript = {
+        __default = '// %s',
+        jsx_element = '{/* %s */}',
+        jsx_fragment = '{/* %s */}',
+        jsx_attribute = '// %s',
+        comment = '// %s'
+      },
+      typescript = {
+        __default = '// %s',
+        jsx_element = '{/* %s */}',
+        jsx_fragment = '{/* %s */}',
+        jsx_attribute = '// %s',
+        comment = '// %s'
+      },
+      css = '// %s',
     }
+  },
 }
+

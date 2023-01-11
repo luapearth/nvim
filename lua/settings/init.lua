@@ -1,6 +1,8 @@
 local set = vim.opt
 
 vim.notify = require 'notify'
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 set.expandtab = true
 set.smarttab = true
@@ -22,6 +24,7 @@ set.termguicolors = true
 set.number = true
 set.relativenumber = true
 set.cursorline = true
+set.colorcolumn = "100"
 
 set.hidden = true
 
